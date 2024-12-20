@@ -11,7 +11,7 @@
    https://docs.google.com/presentation/d/1s9CaimifbuRrW492ByiLlYwEKmLn0BQ9grSEgsH2kfI/edit#slide=id.g320b6b531da_0_1358
 
 3. # Deployment link
-     client-pro-frontend-git-main-joe-brians-projects.vercel.app
+     [](client-pro-frontend-git-main-joe-brians-projects.vercel.app)
 
 
 
