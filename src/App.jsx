@@ -9,7 +9,7 @@ const App = () => {
 
   // Fetch clients from the API
   useEffect(() => {
-    fetch("http://127.0.0.1:8001/clients/")
+    fetch("https://clientpro-backend.onrender.com/clients/")
       .then((response) => response.json())
       .then((data) => {
         setClients(data);
@@ -21,7 +21,7 @@ const App = () => {
 
   // Fetch projects from the API
   useEffect(() => {
-    fetch("http://127.0.0.1:8001/projects/")
+    fetch("https://clientpro-backend.onrender.com/projects/")
       .then((response) => response.json())
       .then((data) => {
         setProjects(data);

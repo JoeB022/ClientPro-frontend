@@ -1,16 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';  // Assuming you're using Axios
 import { Link } from 'react-router-dom';
 
 const ClientList = () => {
   const [clients, setClients] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetching clients from the backend API
-    axios.get('/api/clients')
-      .then(response => setClients(response.data))
-      .catch(error => console.error('Error fetching clients:', error));
+    // Fetching clients using fetch API
+    fetch('/api/clients')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setClients(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Error fetching clients:', err);
+        setError('Failed to fetch clients. Please try again later.');
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>
