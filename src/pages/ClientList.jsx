@@ -7,23 +7,23 @@ const ClientList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetching clients using fetch API
-    fetch('/api/clients')
-      .then(response => {
+    const fetchClients = async () => {
+      try {
+        const response = await fetch('/clients');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json();
-      })
-      .then(data => {
+        const data = await response.json();
         setClients(data);
-        setLoading(false);
-      })
-      .catch(err => {
+      } catch (err) {
         console.error('Error fetching clients:', err);
         setError('Failed to fetch clients. Please try again later.');
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchClients();
   }, []);
 
   if (loading) {
